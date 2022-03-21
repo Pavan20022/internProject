@@ -9,38 +9,44 @@ import UIKit
 import Firebase
 
 class ListViewController: UITableViewController {
+    
+    var itemArray = ["Pavan","Pareekshith","Rahul"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+       
+        
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    //override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
+       // return 0
+   // }
+    
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return itemArray.count
+        
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
 
         // Configure the cell...
+        cell.textLabel?.text = itemArray[indexPath.row]
 
         return cell
     }
-    */
+    
+    //MARK - TableView Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -102,4 +108,34 @@ class ListViewController: UITableViewController {
         
     }
     
+    //MARK- ADD NEW ITEM
+    
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Enter the student name ", message: "", preferredStyle: .alert)
+              
+               let action = UIAlertAction(title: "Enter", style: .default) { (action) in
+                
+                self.itemArray.append(textField.text!)
+                self.tableView.reloadData()
+               }
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Student Name"
+            textField = alertTextField
+            
+        }
+                
+               alert.addAction(action)
+           
+           present(alert,animated:true,completion:nil)
+          
+           }
+    
+    
 }
+
+
