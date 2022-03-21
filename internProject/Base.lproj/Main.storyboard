@@ -11,7 +11,7 @@
         <!--Root View Controller-->
         <scene sceneID="L14-Ca-DgG">
             <objects>
-                <tableViewController id="iNG-Qq-dVX" sceneMemberID="viewController">
+                <tableViewController id="iNG-Qq-dVX" customClass="ListViewController" customModule="internProject" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7JI-Rp-WIj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,15 +34,14 @@
                     <navigationItem key="navigationItem" title="Root View Controller" id="K2F-3p-5Ad">
                         <barButtonItem key="leftBarButtonItem" title="Log Out" id="eKh-Ia-zjA">
                             <connections>
-                                <action selector="logOutPressed:" destination="I4j-lg-sQn" id="0Mx-aE-ek4"/>
+                                <action selector="logOutPressed:" destination="iNG-Qq-dVX" id="Ra3-qd-CZD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3B-i0-JmL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="I4j-lg-sQn" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1136" y="39"/>
+            <point key="canvasLocation" x="1328" y="34"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="N2Q-1s-y6O">
@@ -248,7 +247,8 @@
                                             <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <segue destination="iNG-Qq-dVX" kind="show" id="diT-6L-V6k"/>
+                                            <action selector="loginPressed:" destination="sHi-nJ-BEK" eventType="touchUpInside" id="gmO-FM-oUN"/>
+                                            <segue destination="iNG-Qq-dVX" kind="show" identifier="goToList" id="diT-6L-V6k"/>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oCj-ty-59P">
@@ -299,7 +299,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uxw-Ym-szb"/>
+        <segue reference="diT-6L-V6k"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="images" width="225" height="225"/>

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class FirstViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
@@ -27,5 +28,18 @@ class FirstViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    @IBAction func loginPressed(_ sender: UIButton) {
+        //TODO: Log in the user
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { ( user, error) in
+            if error != nil {
+                print(error!)
+            } else {
+                print("Login is successful")
+            
+                
+                self.performSegue(withIdentifier: "goToList", sender: self)
+            }
+        }
+    }
+    
 }
