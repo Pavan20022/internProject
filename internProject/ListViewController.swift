@@ -25,7 +25,7 @@ class ListViewController: UITableViewController {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "Contacts"
+        self.navigationItem.title = "NMAMIT College Students"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddStudent))
         

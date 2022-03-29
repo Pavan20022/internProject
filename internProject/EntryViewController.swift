@@ -21,7 +21,7 @@ class EntryViewController: UIViewController {
     
     let textField: UITextField = {
         let tf = UITextField()
-        tf.placeholder = "Full Name"
+        tf.placeholder = "Enter Student Details"
         tf.textAlignment = .center
         tf.translatesAutoresizingMaskIntoConstraints = false
         return tf
