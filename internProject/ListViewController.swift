@@ -8,16 +8,48 @@
 import UIKit
 import Firebase
 
+private let reuseIdentifier = "Cell"
+
+// MARK: Contact
+
+struct Student {
+    var fullname: String
+}
 class ListViewController: UITableViewController {
     
-    var itemArray = ["Pavan","Pareekshith","Rahul"]
+    
+    var students = [Student]()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Contacts"
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddStudent))
+        
+        view.backgroundColor = .white
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.tableFooterView = UIView(frame: .zero)
        
         
     }
+    
+    //Mark - Selectors
+    
+    @objc func handleAddStudent() {
+        
+        let controller = EntryViewController()
+        controller.delegate = self
+        
+        self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
+    }
+    
+    
+    
+    
 
     // MARK: - Table view data source
 
@@ -29,18 +61,14 @@ class ListViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return itemArray.count
+        return students.count
         
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-
-        // Configure the cell...
-        cell.textLabel?.text = itemArray[indexPath.row]
-
-        return cell
-    }
+        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
+        cell.textLabel?.text = students[indexPath.row].fullname
+        return cell    }
     
     //MARK - TableView Delegate
     
@@ -109,33 +137,18 @@ class ListViewController: UITableViewController {
     }
     
     //MARK- ADD NEW ITEM
-    
-    
-    @IBAction func addButtonPressed(_ sender: Any) {
-        
-        var textField = UITextField()
-        
-        let alert = UIAlertController(title: "Enter the student name ", message: "", preferredStyle: .alert)
-              
-               let action = UIAlertAction(title: "Enter", style: .default) { (action) in
-                
-                self.itemArray.append(textField.text!)
-                self.tableView.reloadData()
-               }
-        
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Student Name"
-            textField = alertTextField
-            
-        }
-                
-               alert.addAction(action)
-           
-           present(alert,animated:true,completion:nil)
-          
-           }
-    
-    
 }
+    
+    extension ListViewController: AddStudentDelegate {
+        
+        func addStudent(student: Student) {
+            self.dismiss(animated: true) {
+                self.students.append(student)
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+
 
 
