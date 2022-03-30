@@ -6,55 +6,45 @@
 //
 
 import UIKit
+import Firebase
 
-// MARK: - AddStudentDelegate Protocol
-
-protocol AddStudentDelegate {
-    func addStudent (student: Student)
-}
+var refStudents : DatabaseReference!
 
 class EntryViewController: UIViewController {
     
-    // MARK: - Properties
+    @IBOutlet weak var nameLabelField: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var usnLabelField: UILabel!
+    @IBOutlet weak var usnTextField: UITextField!
+    @IBOutlet weak var cgpaLabelField: UILabel!
+    @IBOutlet weak var cgpaTextField: UITextField!
     
-    var delegate: AddStudentDelegate?
+    @IBOutlet weak var branchLabelField: UILabel!
+    @IBOutlet weak var branchTextField: UITextField!
     
-    let textField: UITextField = {
-        let tf = UITextField()
-        tf.placeholder = "Enter Student Details"
-        tf.textAlignment = .center
-        tf.translatesAutoresizingMaskIntoConstraints = false
-        return tf
-    }()
-    
+
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        refStudents = Database.database().reference()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(handleDone))
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(handleCancel))
-        
-        view.addSubview(textField)
-        textField.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        textField.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        textField.widthAnchor.constraint(equalToConstant: view.frame.width - 64).isActive = true
-        
-        textField.becomeFirstResponder()
+     
         // Do any additional setup after loading the view.
     }
-    @objc func handleDone() {
+    
+    func addStudent() {
+        let key = refStudents.childByAutoId().key
         
-        guard let fullname = textField.text, textField.hasText else {
-            print("Handle error here..")
-            return
-        }
+        let students = ["id":key,"studentName":nameTextField.text! as String, "studentUsn":usnTextField.text!, "cgpa":cgpaTextField.text!, "branchName":branchTextField.text! as String]
         
-        let student = Student(fullname: fullname)
+        refStudents.child(key!).setValue(students)
         
-        delegate?.addStudent(student: student)
     }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -64,8 +54,9 @@ class EntryViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @objc func handleCancel() {
-        self.dismiss(animated: true, completion: nil)
+    @IBAction func addEntry(_ sender: Any) {
+        addStudent()
     }
-
+    
+    
 }

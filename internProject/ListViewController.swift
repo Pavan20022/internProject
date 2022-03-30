@@ -8,50 +8,76 @@
 import UIKit
 import Firebase
 
-private let reuseIdentifier = "Cell"
 
 // MARK: Contact
 
-struct Student {
-    var fullname: String
-}
+
+
 class ListViewController: UITableViewController {
     
     
-    var students = [Student]()
+    @IBOutlet var tableStudent: UITableView!
+    
+    var studentlist = [StudentModel]()
+    // MARK: - Table view data source
     
 
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return studentlist.count
+    }
+
+    
+    
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell",for: indexPath) as! TableViewCell
+        
+        let student: StudentModel
+        
+        student = studentlist[indexPath.row]
+        
+        cell.labelName.text = student.name
+        cell.labelBranch.text = student.branch
+        
+        return cell
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "NMAMIT College Students"
+        refStudents = Database.database().reference()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddStudent))
+        refStudents.observe(DataEventType.value, with:{(DataSnapshot) in
+                                
+            if DataSnapshot.childrenCount > 0{
+                self.studentlist.removeAll()
+                
+                for students in DataSnapshot.children.allObjects as! [DataSnapshot] {
+                    let studentObject = students.value as?  [String: AnyObject]
+                    let studentName = studentObject?["studentName"]
+                    let branchName = studentObject?["branchName"]
+                    let studentId = studentObject?["id"]
+                    
+                    let student = StudentModel(id: studentId as! String?, name: studentName as! String?, branch: branchName as! String?)
+                    
+                    self.studentlist.append(student)
+                    
+                }
+                
+                self.tableStudent.reloadData()
+                
+            }
+            
+    })
+  
         
-        view.backgroundColor = .white
-        
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
-        tableView.tableFooterView = UIView(frame: .zero)
-       
         
     }
     
-    //Mark - Selectors
     
-    @objc func handleAddStudent() {
-        
-        let controller = EntryViewController()
-        controller.delegate = self
-        
-        self.present(UINavigationController(rootViewController: controller), animated: true, completion: nil)
-    }
-    
-    
-    
-    
-
-    // MARK: - Table view data source
 
     //override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -59,22 +85,14 @@ class ListViewController: UITableViewController {
    // }
     
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return students.count
-        
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
-        cell.textLabel?.text = students[indexPath.row].fullname
-        return cell    }
+    
     
     //MARK - TableView Delegate
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-    }
+        
+   // }
 
     /*
     // Override to support conditional editing of the table view.
@@ -120,35 +138,25 @@ class ListViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func logOutPressed(_ sender: Any) {
-        do{
-            try Auth.auth().signOut()
+    //@IBAction func logOutPressed(_ sender: Any) {
+        //do{
+          //  try Auth.auth().signOut()
             
-        }catch {
-            print("error: there was a problem signing out")
-        }
+        //}catch {
+           // print("error: there was a problem signing out")
+        //}
         
-        guard (navigationController?.popToRootViewController(animated: true)) != nil else {
-            print("No View controllers to pop off")
-            return
-        }
+        //guard (navigationController?.popToRootViewController(animated: true)) != nil else {
+           // print("No View controllers to pop off")
+           // return
+      //  }
             
         
-    }
+    //}
     
     //MARK- ADD NEW ITEM
+//}
+    
+//}
+
 }
-    
-    extension ListViewController: AddStudentDelegate {
-        
-        func addStudent(student: Student) {
-            self.dismiss(animated: true) {
-                self.students.append(student)
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
-
-
-
