@@ -12,14 +12,86 @@ import Firebase
 // MARK: Contact
 
 
-
 class ListViewController: UITableViewController {
     
+    
+    
+    var refStudents : DatabaseReference!
     
     @IBOutlet var tableStudent: UITableView!
     
     var studentlist = [StudentModel]()
+  
+    
     // MARK: - Table view data source
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        
+        
+        let student = studentlist[indexPath.row]
+        
+        let alertController = UIAlertController(title: student.name,message: student.branch,preferredStyle: .alert)
+        
+        let detailAction = UIAlertAction(title: "View Details", style: .default){(action) in
+            self.performSegue(withIdentifier: "goToTab", sender: self)
+            
+                }
+        //the confirm action taking the inputs
+        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
+                    
+                    //getting artist id
+                    let id = student.id
+                    
+                    //getting new values
+                    let name = alertController.textFields?[0].text
+                    let branch = alertController.textFields?[1].text
+                    
+                    //calling the update method to update artist
+            self.updateStudent(id: id!, name: name!, branch:branch!)
+                }
+        
+        //the cancel action doing nothing
+        let cancelAction = UIAlertAction(title: "Delete Current Detail", style: .cancel) { (action) in
+            self.deleteStudent(id: student.id!)
+        }
+        
+        alertController.addTextField { (textField) in
+            textField.text = student.name
+        }
+        alertController.addTextField { (textField) in
+            textField.text = student.branch
+        }
+        
+        
+        
+        alertController.addAction(detailAction)
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        
+        present(alertController, animated: true, completion: nil)
+    
+    }
+    
+    func deleteStudent(id:String){
+        refStudents.child(id).setValue(nil)
+    }
+    func updateStudent(id:String,name:String,branch:String) {
+        
+        let student = ["id":id,"studentName": name,"studentBranch":branch]
+        
+        refStudents.child(id).setValue(student)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? DetailsViewController{
+            destination.name = studentlist[(tableStudent.indexPathForSelectedRow?.row)!]
+            tableStudent.deselectRow(at: tableStudent.indexPathForSelectedRow!, animated: true)
+        }
+    }
     
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,14 +103,17 @@ class ListViewController: UITableViewController {
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell",for: indexPath) as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell",for: indexPath) as! CustomTableViewCell
         
         let student: StudentModel
         
         student = studentlist[indexPath.row]
         
-        cell.labelName.text = student.name
-        cell.labelBranch.text = student.branch
+        cell.textLabel?.text = student.name
+        cell.detailTextLabel?.text = student.branch
+        
+       // cell.labelName.text = student.name
+        //cell.labelBranch.text = student.branch
         
         return cell
         
@@ -48,7 +123,22 @@ class ListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refStudents = Database.database().reference()
+        refStudents = Database.database().reference().child("students")
+        
+        retrieveData()
+        
+        tableStudent.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        
+        
+     
+        
+    }
+    
+    func retrieveData() {
+        
+        let refStudents = Database.database().reference().child("students")
+        
+        
         
         refStudents.observe(DataEventType.value, with:{(DataSnapshot) in
                                 
@@ -76,8 +166,6 @@ class ListViewController: UITableViewController {
         
         
     }
-    
-    
 
     //override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

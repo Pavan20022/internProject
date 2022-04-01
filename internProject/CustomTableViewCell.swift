@@ -1,5 +1,5 @@
 //
-//  TableViewCell.swift
+//  CustomTableViewCell.swift
 //  internProject
 //
 //  Created by Pavan D J on 30/03/22.
@@ -7,12 +7,8 @@
 
 import UIKit
 
-class TableViewCell: UITableViewCell {
+class CustomTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var labelBranch: UILabel!
-    @IBOutlet weak var labelName: UILabel!
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +19,5 @@ class TableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
 }

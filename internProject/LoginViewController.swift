@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FirstViewController.swift
 //  internProject
 //
 //  Created by Pavan D J on 18/03/22.
@@ -8,11 +8,10 @@
 import UIKit
 import Firebase
 
-class SecondViewController: UIViewController {
-    
+class LoginViewController: UIViewController {
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var emailTextField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,21 +28,18 @@ class SecondViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
-    @IBAction func registerButtonPressed(_ sender: UIButton) {
-        
-        //TODO: Set up a new user in Firebase
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-            
+    @IBAction func loginPressed(_ sender: UIButton) {
+        //TODO: Log in the user
+        Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { ( user, error) in
             if error != nil {
                 print(error!)
             } else {
-                //success
-                print("Registration Successful!")
+                print("Login is successful")
+            
                 
-                self.performSegue(withIdentifier: "goToList", sender: self)
                 
             }
         }
     }
+    
 }

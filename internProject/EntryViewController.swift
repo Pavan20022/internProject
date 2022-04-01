@@ -8,9 +8,11 @@
 import UIKit
 import Firebase
 
-var refStudents : DatabaseReference!
+
 
 class EntryViewController: UIViewController {
+    
+    var refStudents : DatabaseReference!
     
     @IBOutlet weak var nameLabelField: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
@@ -27,18 +29,36 @@ class EntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        refStudents = Database.database().reference()
+        refStudents = Database.database().reference().child("students")
+        
         
      
         // Do any additional setup after loading the view.
     }
     
     func addStudent() {
+        
+        
+        let refStudents = Database.database().reference().child("students")
+        
         let key = refStudents.childByAutoId().key
         
         let students = ["id":key,"studentName":nameTextField.text! as String, "studentUsn":usnTextField.text!, "cgpa":cgpaTextField.text!, "branchName":branchTextField.text! as String]
         
-        refStudents.child(key!).setValue(students)
+        
+        //refStudents.childByAutoId().setValue(students)
+        //refStudents.child(key!).setValue(students)
+        
+        refStudents.childByAutoId().setValue(students) {
+            (error, reference) in
+            
+            if error != nil {
+                print(error!)
+            } else {
+                print("Message saved Successfully")
+                
+            }
+        }
         
     }
     
