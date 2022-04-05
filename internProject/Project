@@ -1,0 +1,363 @@
+diff --git a/internProject.xcodeproj/project.pbxproj b/internProject.xcodeproj/project.pbxproj
+index 510395c..07d25bc 100644
+--- a/internProject.xcodeproj/project.pbxproj
++++ b/internProject.xcodeproj/project.pbxproj
+@@ -22,6 +22,7 @@
+ 		CF53ED1327E4578F00B69C35 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF53ED1227E4578F00B69C35 /* GoogleService-Info.plist */; };
+ 		CF53ED3027E4829300B69C35 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53ED2F27E4829300B69C35 /* FirstViewController.swift */; };
+ 		CF53ED3527E489E900B69C35 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53ED3427E489E900B69C35 /* SecondViewController.swift */; };
++		CF9F453527EB464C00211CBA /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF9F453427EB464C00211CBA /* Details.swift */; };
+ /* End PBXBuildFile section */
+ 
+ /* Begin PBXFileReference section */
+@@ -43,6 +44,7 @@
+ 		CF53ED1227E4578F00B69C35 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+ 		CF53ED2F27E4829300B69C35 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+ 		CF53ED3427E489E900B69C35 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
++		CF9F453427EB464C00211CBA /* Details.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
+ 		E6E32E8E509687D7D24A3241 /* Pods_internProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_internProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+ /* End PBXFileReference section */
+ 
+@@ -81,6 +83,7 @@
+ 			children = (
+ 				CF53ECF927E453E400B69C35 /* AppDelegate.swift */,
+ 				CF53ECFB27E453E400B69C35 /* SceneDelegate.swift */,
++				CF9F453427EB464C00211CBA /* Details.swift */,
+ 				CF53ECFD27E453E400B69C35 /* ViewController.swift */,
+ 				CF51A0E327E9F60000895671 /* EntryViewController.swift */,
+ 				CF4F888727E84BED007FF54B /* ListViewController.swift */,
+@@ -237,6 +240,7 @@
+ 				CF53ECFE27E453E400B69C35 /* ViewController.swift in Sources */,
+ 				CF53ED0427E453E400B69C35 /* internProject.xcdatamodeld in Sources */,
+ 				CF51A0E427E9F60000895671 /* EntryViewController.swift in Sources */,
++				CF9F453527EB464C00211CBA /* Details.swift in Sources */,
+ 				CF53ECFA27E453E400B69C35 /* AppDelegate.swift in Sources */,
+ 				CF53ECFC27E453E400B69C35 /* SceneDelegate.swift in Sources */,
+ 				CF4F888827E84BED007FF54B /* ListViewController.swift in Sources */,
+diff --git a/internProject/Base.lproj/Main.storyboard b/internProject/Base.lproj/Main.storyboard
+index 8589d5e..bb97238 100644
+--- a/internProject/Base.lproj/Main.storyboard
++++ b/internProject/Base.lproj/Main.storyboard
+@@ -42,7 +42,7 @@
+                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                             <connections>
+                                 <action selector="addButtonPressed:" destination="iNG-Qq-dVX" id="FS1-hO-fM2"/>
+-                                <segue destination="bZK-9g-Sb7" kind="presentation" id="X6f-wp-FVM"/>
++                                <segue destination="bZK-9g-Sb7" kind="presentation" identifier="goToEntry" id="X6f-wp-FVM"/>
+                             </connections>
+                         </barButtonItem>
+                     </navigationItem>
+@@ -65,68 +65,88 @@
+                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sFz-kD-pov" userLabel="EntryView">
+                                 <rect key="frame" x="0.0" y="55" width="414" height="787"/>
+                                 <subviews>
+-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqO-vq-rC5">
+-                                        <rect key="frame" x="41" y="116" width="282" height="37"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+-                                        <nil key="highlightedColor"/>
+-                                    </label>
+-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B9g-g1-FyI">
+-                                        <rect key="frame" x="41" y="161" width="282" height="34"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+-                                        <textInputTraits key="textInputTraits"/>
+-                                    </textField>
+-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your College USN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdZ-cZ-xPU">
+-                                        <rect key="frame" x="41" y="203" width="282" height="37"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+-                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+-                                        <nil key="highlightedColor"/>
+-                                    </label>
+-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-sJ-Txc">
+-                                        <rect key="frame" x="41" y="248" width="282" height="34"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+-                                        <textInputTraits key="textInputTraits"/>
+-                                    </textField>
+-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your CGPA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfb-4i-4Su">
+-                                        <rect key="frame" x="41" y="290" width="282" height="37"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+-                                        <nil key="textColor"/>
+-                                        <nil key="highlightedColor"/>
+-                                    </label>
+-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CGPA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Sz-pq-Amd">
+-                                        <rect key="frame" x="41" y="335" width="282" height="34"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+-                                        <textInputTraits key="textInputTraits"/>
+-                                    </textField>
+-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enter your Branch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL4-fq-39P">
+-                                        <rect key="frame" x="41" y="377" width="282" height="37"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+-                                        <nil key="textColor"/>
+-                                        <nil key="highlightedColor"/>
+-                                    </label>
+-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Branch" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUS-Fe-FNa">
+-                                        <rect key="frame" x="41" y="422" width="282" height="34"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+-                                        <textInputTraits key="textInputTraits"/>
+-                                    </textField>
+-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Registratioin" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-fY-EPK">
+-                                        <rect key="frame" x="62" y="15" width="240" height="85"/>
+-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
++                                    <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="eS1-rd-Q5z">
++                                        <rect key="frame" x="117.5" y="284.5" width="179.5" height="218"/>
++                                        <subviews>
++                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bqO-vq-rC5">
++                                                <rect key="frame" x="0.0" y="0.0" width="179.5" height="20.5"/>
++                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                                <nil key="highlightedColor"/>
++                                            </label>
++                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B9g-g1-FyI">
++                                                <rect key="frame" x="0.0" y="20.5" width="179.5" height="34"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
++                                                <textInputTraits key="textInputTraits"/>
++                                            </textField>
++                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your College USN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdZ-cZ-xPU">
++                                                <rect key="frame" x="0.0" y="54.5" width="179.5" height="20.5"/>
++                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                                <nil key="highlightedColor"/>
++                                            </label>
++                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="USN" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="y1c-sJ-Txc">
++                                                <rect key="frame" x="0.0" y="75" width="179.5" height="34"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
++                                                <textInputTraits key="textInputTraits"/>
++                                            </textField>
++                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your CGPA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xfb-4i-4Su">
++                                                <rect key="frame" x="0.0" y="109" width="179.5" height="20.5"/>
++                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                                <nil key="textColor"/>
++                                                <nil key="highlightedColor"/>
++                                            </label>
++                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="CGPA" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Sz-pq-Amd">
++                                                <rect key="frame" x="0.0" y="129.5" width="179.5" height="34"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
++                                                <textInputTraits key="textInputTraits"/>
++                                            </textField>
++                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your Branch" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yL4-fq-39P">
++                                                <rect key="frame" x="0.0" y="163.5" width="179.5" height="20.5"/>
++                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
++                                                <nil key="textColor"/>
++                                                <nil key="highlightedColor"/>
++                                            </label>
++                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Branch" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUS-Fe-FNa">
++                                                <rect key="frame" x="0.0" y="184" width="179.5" height="34"/>
++                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
++                                                <textInputTraits key="textInputTraits"/>
++                                            </textField>
++                                        </subviews>
++                                    </stackView>
++                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Registratioin" translatesAutoresizingMaskIntoConstraints="NO" id="oqa-fY-EPK">
++                                        <rect key="frame" x="70" y="81" width="275" height="132"/>
+                                     </imageView>
++                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ezn-Ps-99g">
++                                        <rect key="frame" x="0.0" y="560" width="414" height="34"/>
++                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                        <fontDescription key="fontDescription" name="Copperplate" family="Copperplate" pointSize="21"/>
++                                        <state key="normal" title="Add new entry">
++                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
++                                        </state>
++                                        <connections>
++                                            <action selector="buttonAddNewEntry:" destination="bZK-9g-Sb7" eventType="touchUpInside" id="nUh-9D-wdx"/>
++                                        </connections>
++                                    </button>
+                                 </subviews>
+                                 <color key="backgroundColor" systemColor="labelColor"/>
++                                <constraints>
++                                    <constraint firstItem="eS1-rd-Q5z" firstAttribute="centerX" secondItem="sFz-kD-pov" secondAttribute="centerX" id="Jnq-jW-42o"/>
++                                    <constraint firstItem="eS1-rd-Q5z" firstAttribute="centerY" secondItem="sFz-kD-pov" secondAttribute="centerY" id="Lrv-sg-c0e"/>
++                                    <constraint firstAttribute="trailing" secondItem="oqa-fY-EPK" secondAttribute="trailing" constant="69" id="NNh-Vp-kUY"/>
++                                    <constraint firstItem="oqa-fY-EPK" firstAttribute="top" secondItem="sFz-kD-pov" secondAttribute="top" constant="81" id="aL3-h4-jPJ"/>
++                                    <constraint firstItem="eS1-rd-Q5z" firstAttribute="top" secondItem="oqa-fY-EPK" secondAttribute="bottom" constant="71.5" id="flN-Vh-3k7"/>
++                                    <constraint firstItem="oqa-fY-EPK" firstAttribute="leading" secondItem="sFz-kD-pov" secondAttribute="leading" constant="70" id="fwo-PG-0bB"/>
++                                    <constraint firstItem="ezn-Ps-99g" firstAttribute="top" secondItem="eS1-rd-Q5z" secondAttribute="bottom" constant="57.5" id="gx0-jd-UNc"/>
++                                    <constraint firstAttribute="bottom" secondItem="ezn-Ps-99g" secondAttribute="bottom" constant="193" id="itF-Fp-CRJ"/>
++                                    <constraint firstItem="oqa-fY-EPK" firstAttribute="leading" secondItem="sFz-kD-pov" secondAttribute="leading" constant="70" id="ru4-12-agx"/>
++                                    <constraint firstItem="ezn-Ps-99g" firstAttribute="leading" secondItem="sFz-kD-pov" secondAttribute="leading" id="uqQ-ES-uqM"/>
++                                    <constraint firstAttribute="trailing" secondItem="ezn-Ps-99g" secondAttribute="trailing" id="ycw-JM-ezD"/>
++                                </constraints>
+                             </view>
+                         </subviews>
+                         <viewLayoutGuide key="safeArea" id="P1h-nN-4RN"/>
+@@ -138,6 +158,16 @@
+                             <constraint firstAttribute="bottom" secondItem="sFz-kD-pov" secondAttribute="bottom" id="j3u-yn-TCj"/>
+                         </constraints>
+                     </view>
++                    <connections>
++                        <outlet property="branchField" destination="yL4-fq-39P" id="jxd-mG-ncP"/>
++                        <outlet property="branchTexField" destination="OUS-Fe-FNa" id="LfY-8u-WfA"/>
++                        <outlet property="cgpaField" destination="Xfb-4i-4Su" id="8lM-Vl-PPW"/>
++                        <outlet property="cgpaTextField" destination="1Sz-pq-Amd" id="T8t-Kl-wBK"/>
++                        <outlet property="nameField" destination="bqO-vq-rC5" id="8KJ-Fh-4XB"/>
++                        <outlet property="nameTextField" destination="B9g-g1-FyI" id="MTH-Ye-sTx"/>
++                        <outlet property="usnField" destination="BdZ-cZ-xPU" id="gIh-ev-Ls8"/>
++                        <outlet property="usnTextField" destination="y1c-sJ-Txc" id="s8R-HR-NhT"/>
++                    </connections>
+                 </viewController>
+                 <placeholder placeholderIdentifier="IBFirstResponder" id="8bJ-8a-2YY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+             </objects>
+diff --git a/internProject/Details.swift b/internProject/Details.swift
+new file mode 100644
+index 0000000..792e4a5
+--- /dev/null
++++ b/internProject/Details.swift
+@@ -0,0 +1,15 @@
++//
++//  Details.swift
++//  internProject
++//
++//  Created by Pavan D J on 23/03/22.
++//
++
++import Foundation
++
++class Details {
++    
++    var sender : String = ""
++    
++    
++}
+diff --git a/internProject/EntryViewController.swift b/internProject/EntryViewController.swift
+index 8c24f0e..fce7c0d 100644
+--- a/internProject/EntryViewController.swift
++++ b/internProject/EntryViewController.swift
+@@ -6,15 +6,50 @@
+ //
+ 
+ import UIKit
++import Firebase
++import AVFoundation
+ 
+ class EntryViewController: UIViewController {
+-
++    
++    var refDetails : DatabaseReference!
++    
++    private let database = Database.database().reference()
++    
++    
++  
++    
++    @IBOutlet weak var nameField: UILabel!
++    @IBOutlet weak var usnField: UILabel!
++    @IBOutlet weak var cgpaField: UILabel!
++    @IBOutlet weak var branchField: UILabel!
++    @IBOutlet weak var nameTextField: UITextField!
++    @IBOutlet weak var usnTextField: UITextField!
++    @IBOutlet weak var cgpaTextField: UITextField!
++    @IBOutlet weak var branchTexField: UITextField!
++    
++    
++    
++    
++    
++    
++    
+     override func viewDidLoad() {
+         super.viewDidLoad()
+-
+-        // Do any additional setup after loading the view.
++        
++        refDetails = Database.database().reference()
++        
++        
+     }
+     
++    func addDetails() {
++        
++        let key = refDetails.childByAutoId().key
++        
++        let studentDetails = [ "id":key,"StudentName":nameTextField.text! as String,
++                               "usn":usnTextField.text! as String,"cgpa":cgpaTextField.text! as String,"branch":branchTexField.text! as String ]
++        refDetails.child(key!).setValue(studentDetails)
++
++    }
+ 
+     /*
+     // MARK: - Navigation
+@@ -26,4 +61,11 @@ class EntryViewController: UIViewController {
+     }
+     */
+ 
++    @IBAction func buttonAddNewEntry(_ sender: Any) {
++        
++       addDetails()
++    }
++    
++    
+ }
++
+diff --git a/internProject/ListViewController.swift b/internProject/ListViewController.swift
+index c76d641..4d9d237 100644
+--- a/internProject/ListViewController.swift
++++ b/internProject/ListViewController.swift
+@@ -33,7 +33,7 @@ class ListViewController: UITableViewController {
+ 
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+         // #warning Incomplete implementation, return the number of rows
+-        return 3
++        return 5
+         
+     }
+ 
+@@ -123,27 +123,30 @@ class ListViewController: UITableViewController {
+     
+     @IBAction func addButtonPressed(_ sender: Any) {
+         
+-        var textField = UITextField()
+         
+-        let alert = UIAlertController(title: "Enter the student name ", message: "", preferredStyle: .alert)
++        performSegue(withIdentifier: "goToEntry", sender: self)
++        
++        //var textField = UITextField()
++        
++        //let alert = UIAlertController(title: "Enter the student name ", message: "", preferredStyle: .alert)
+               
+-               let action = UIAlertAction(title: "Enter", style: .default) { (action) in
++               //let action = UIAlertAction(title: "Enter", style: .default) { (action) in
+                 
+-                self.itemArray.append(textField.text!)
+-                self.tableView.reloadData()
+-               }
++              // self.itemArray.append(textField.text!)
++               // self.tableView.reloadData()
++               //}
+         
+-        alert.addTextField { (alertTextField) in
+-            alertTextField.placeholder = "Student Name"
+-            textField = alertTextField
++       // alert.addTextField { (alertTextField) in
++         //  alertTextField.placeholder = "Student Name"
++           // textField = alertTextField
+             
+-        }
++     //   }
+                 
+-               alert.addAction(action)
++             //  alert.addAction(action)
+            
+-           present(alert,animated:true,completion:nil)
+-          
+-           }
++         // present(alert,animated:true,completion:nil)
++        
++   }
+     
+     
+ }

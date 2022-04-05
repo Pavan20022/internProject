@@ -1,0 +1,6 @@
+framework module Pods_internProject {
+  umbrella header "Pods-internProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
