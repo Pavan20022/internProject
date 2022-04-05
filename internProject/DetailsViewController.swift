@@ -16,14 +16,17 @@ class DetailsViewController: UIViewController{
     @IBOutlet weak var cgpaLabel: UILabel!
     @IBOutlet weak var branchLabel: UILabel!
     
-    var student : StudentModel?
-   
+    //var student : StudentModel?
+   var student = [Studentlist]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.text = "\(String(describing: (student?.name)))"
-        branchLabel.text = "\(String(describing: (student?.branch)))"
+        student = EntryModel.shareInstance
+        
+        
+        //nameLabel.text = "\(String(describing: (student?.name)))"
+        //branchLabel.text = "\(String(describing: (student?.branch)))"
         //  let refStudents = Database.database().reference().child("students")
         
       //  var studentlists = [StudentModel]()
