@@ -14,11 +14,12 @@ import Firebase
 
 class ListViewController: UITableViewController {
     
-    
+    var refStudentEntry: DatabaseReference!
     
     var refStudents : DatabaseReference!
     
     @IBOutlet var tableStudent: UITableView!
+    
     
     var studentlist = [StudentModel]()
   
@@ -29,7 +30,6 @@ class ListViewController: UITableViewController {
         
         
         
-        
         let student = studentlist[indexPath.row]
         
         let alertController = UIAlertController(title: student.name,message: student.branch,preferredStyle: .alert)
@@ -37,6 +37,9 @@ class ListViewController: UITableViewController {
         let detailAction = UIAlertAction(title: "View Details", style: .default){(action) in
             self.performSegue(withIdentifier: "goToTab", sender: self)
             
+           // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            
+           // let newStudent = Studentlist(context: context)
                 }
         //the confirm action taking the inputs
         let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
@@ -88,7 +91,9 @@ class ListViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? DetailsViewController{
-            destination.name = studentlist[(tableStudent.indexPathForSelectedRow?.row)!]
+            
+            destination.student = studentlist[(tableStudent.indexPathForSelectedRow?.row)!]
+            
             tableStudent.deselectRow(at: tableStudent.indexPathForSelectedRow!, animated: true)
         }
     }
