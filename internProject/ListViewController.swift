@@ -42,51 +42,12 @@ class ListViewController: UITableViewController {
            // let newStudent = Studentlist(context: context)
                 }
         //the confirm action taking the inputs
-        let confirmAction = UIAlertAction(title: "Enter", style: .default) { (_) in
-                    
-                    //getting artist id
-                    let id = student.id
-                    
-                    //getting new values
-                    let name = alertController.textFields?[0].text
-                    let branch = alertController.textFields?[1].text
-                    
-                    //calling the update method to update artist
-            self.updateStudent(id: id!, name: name!, branch:branch!)
-                }
-        
-        //the cancel action doing nothing
-        let cancelAction = UIAlertAction(title: "Delete Current Detail", style: .cancel) { (action) in
-            self.deleteStudent(id: student.id!)
-        }
-        
-        alertController.addTextField { (textField) in
-            textField.text = student.name
-        }
-        alertController.addTextField { (textField) in
-            textField.text = student.branch
-        }
-        
-        
-        
+      
         alertController.addAction(detailAction)
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
         
         
         present(alertController, animated: true, completion: nil)
     
-    }
-    
-    func deleteStudent(id:String){
-        refStudents.child(id).setValue(nil)
-    }
-    func updateStudent(id:String,name:String,branch:String) {
-        
-        let student = ["id":id,"studentName": name,"studentBranch":branch]
-        
-        refStudents.child(id).setValue(student)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
