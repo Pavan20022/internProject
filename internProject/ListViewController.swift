@@ -16,49 +16,73 @@ class ListViewController: UITableViewController {
     
     var refStudentEntry: DatabaseReference!
     
-    var refStudents : DatabaseReference!
+    var selectedStudentId : String? = nil
     
     @IBOutlet var tableStudent: UITableView!
     
     
     var studentlist = [StudentModel]()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableStudent.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        retrieveData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        // If already logged in directly show the list view controller
+        
+//        if Auth.auth().currentUser?.uid == nil {
+//            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+//
+//                navigationController?.pushViewController(vc, animated: true)
+//
+//                //self.present(vc, animated: true, completion: nil)
+//
+//                tabBarController?.tabBar.isHidden = true
+//
+//            }
+//
+//        }
+        // If not bring up login screen
+        
+       
+        
+    }
+    
+    
+    
+    
   
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "goToTab", sender: self)
         
+//        let student = studentlist[indexPath.row]
+//        selectedStudentId = student.id
+//
+//        let alertController = UIAlertController(title: student.name,message: student.branch,preferredStyle: .alert)
+//        let detailAction = UIAlertAction(title: "View Details", style: .default){(action) in
+//            // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//            // let newStudent = Studentlist(context: context)
+//        }
+//        alertController.addAction(detailAction)
+//        present(alertController, animated: true, completion: nil)
         
-        
-        let student = studentlist[indexPath.row]
-        
-        let alertController = UIAlertController(title: student.name,message: student.branch,preferredStyle: .alert)
-        
-        let detailAction = UIAlertAction(title: "View Details", style: .default){(action) in
-            self.performSegue(withIdentifier: "goToTab", sender: self)
-            
-           // let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-            
-           // let newStudent = Studentlist(context: context)
-                }
-        //the confirm action taking the inputs
-      
-        alertController.addAction(detailAction)
-        
-        
-        present(alertController, animated: true, completion: nil)
-    
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? DetailsViewController{
-            
-            destination.student = studentlist[(tableStudent.indexPathForSelectedRow?.row)!]
-            
-            tableStudent.deselectRow(at: tableStudent.indexPathForSelectedRow!, animated: true)
+        
+        if (segue.identifier == "goToTab"){
+            if let destination = segue.destination as? DetailsViewController{
+                destination.selectedStudent = studentlist[(tableStudent.indexPathForSelectedRow?.row)!]
+                tableStudent.deselectRow(at: tableStudent.indexPathForSelectedRow!, animated: true)
+            }
         }
     }
-    
 
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -86,19 +110,7 @@ class ListViewController: UITableViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        refStudents = Database.database().reference().child("students")
-        
-        retrieveData()
-        
-        tableStudent.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        
-        
-     
-        
-    }
+    
     
     func retrieveData() {
         
@@ -116,6 +128,7 @@ class ListViewController: UITableViewController {
                     let studentName = studentObject?["studentName"]
                     let branchName = studentObject?["branchName"]
                     let studentId = studentObject?["id"]
+                
                     
                     let student = StudentModel(id: studentId as! String?, name: studentName as! String?, branch: branchName as! String?)
                     

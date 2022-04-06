@@ -3,10 +3,11 @@
     <entity name="Studentlist" representedClassName=".Studentlist" syncable="YES">
         <attribute name="branch" optional="YES" attributeType="String"/>
         <attribute name="cgpa" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="usn" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Studentlist" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Studentlist" positionX="-63" positionY="-18" width="128" height="118"/>
     </elements>
 </model>

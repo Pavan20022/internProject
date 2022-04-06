@@ -9,66 +9,56 @@ import UIKit
 import Firebase
 
 class DetailsViewController: UIViewController{
-  
+    
     @IBOutlet weak var detailsLabelField: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usnLabel: UILabel!
     @IBOutlet weak var cgpaLabel: UILabel!
     @IBOutlet weak var branchLabel: UILabel!
     
-    //var student : StudentModel?
-   var student = [Studentlist]()
+    let studentDetailModel = StudentDetailModel()
+    var selectedStudent : StudentModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        student = EntryModel.shareInstance
-        
-        
-        //nameLabel.text = "\(String(describing: (student?.name)))"
-        //branchLabel.text = "\(String(describing: (student?.branch)))"
-        //  let refStudents = Database.database().reference().child("students")
-        
-      //  var studentlists = [StudentModel]()
-        
-       // refStudents.observe(DataEventType.value, with:{(DataSnapshot) in
-                                
-          //  if DataSnapshot.childrenCount > 0{
-             //   self.studentlists.removeAll()
-            
-             //   for students in DataSnapshot.children.allObjects as! [DataSnapshot] {
-             //       let studentObject = students.value as?  [String: AnyObject]
-             //       let studentName = studentObject?["studentName"]
-             //       let branchName = studentObject?["branchName"]
-             //
-            //        let studentId = studentObject?["id"]
-                    
-             //       let student = StudentModel(id: studentId as! String?, name: studentName as! String?, branch: branchName as! String?)
-                    
-              //      self.studentlists.append(student)
-                    
-                }
-                    
-                
-                
-            
-    
-        
-     
-
-        // Do any additional setup after loading the view.
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        getData()
     }
-    */
+    
+    func displayData() {
+        if let student = studentDetailModel.getItem() {
+            nameLabel.text = " Name: \(student.studentName)"
+            usnLabel.text = " USN: \(student.studentUsn)"
+            cgpaLabel.text = " CGPA: \(student.studentCgpa)"
+            branchLabel.text = " Branch: \(student.studentBranch)"
+        } else {
+            print("Error loading data")
+        }
     }
+    
+    func getData() {
+        
+        guard let studentId = selectedStudent?.id else {return}
+        let refStudents = Database.database().reference().child("students").child(studentId)
+        
+        refStudents.observe(DataEventType.value, with:{(DataSnapshot) in
+            
+            if DataSnapshot.childrenCount > 0{
+                    let studentObject = DataSnapshot.value as?  [String: AnyObject]
+                    let studentName = studentObject?["studentName"]
+                    let branchName = studentObject?["branchName"]
+                    let studentUSN = studentObject?["studentUsn"]
+                    let studentCgpa = studentObject?["cgpa"]
+
+                self.studentDetailModel.loadItem(name: studentName as! String, usn: studentUSN as! String, branch: branchName as! String, cgpa: studentCgpa as! String)
+                self.displayData()
+            }
+            
+        })
+        
+    }
+    
+    
+    
+}
     
 

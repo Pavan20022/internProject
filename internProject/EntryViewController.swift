@@ -14,14 +14,9 @@ class EntryViewController: UIViewController {
     
     var refStudents : DatabaseReference!
     
-    @IBOutlet weak var nameLabelField: UILabel!
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var usnLabelField: UILabel!
     @IBOutlet weak var usnTextField: UITextField!
-    @IBOutlet weak var cgpaLabelField: UILabel!
     @IBOutlet weak var cgpaTextField: UITextField!
-    
-    @IBOutlet weak var branchLabelField: UILabel!
     @IBOutlet weak var branchTextField: UITextField!
     
 
@@ -37,25 +32,22 @@ class EntryViewController: UIViewController {
     }
     
     func addStudent() {
-        
-        
         let refStudents = Database.database().reference().child("students")
-        
         let key = refStudents.childByAutoId().key
         
         let students = ["id":key,"studentName":nameTextField.text! as String, "studentUsn":usnTextField.text!, "cgpa":cgpaTextField.text!, "branchName":branchTextField.text! as String]
         
-        
         //refStudents.childByAutoId().setValue(students)
         //refStudents.child(key!).setValue(students)
         
-        refStudents.childByAutoId().setValue(students) {
+        refStudents.child(key!).setValue(students) {
             (error, reference) in
             
             if error != nil {
                 print(error!)
             } else {
                 print("Message saved Successfully")
+                print(reference)
                 
             }
         }
@@ -76,9 +68,10 @@ class EntryViewController: UIViewController {
     */
     @IBAction func addEntry(_ sender: Any) {
         addStudent()
+        navigationController?.popViewController(animated: true)
         let dict = ["name": nameTextField.text ,"usn": usnTextField.text,"cgpa":cgpaTextField.text,"branch":branchTextField.text]
         
-        EntryModel.shareInstance.save(object: dict as! [String : String])
+        //EntryModel.shareInstance.save(object: dict as! [String : String])
         
     }
     

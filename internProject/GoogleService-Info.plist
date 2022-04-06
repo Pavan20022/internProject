@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>DATABASE_URL</key>
-	<string>https://student-record-5764b-default-rtdb.firebaseio.com/</string>
+	<string>https://internproject-164e5-default-rtdb.firebaseio.com/</string>
 	<key>CLIENT_ID</key>
 	<string>558088375422-aso7c5pl72g9ikis1sp1t34tg6auq09d.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>

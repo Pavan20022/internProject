@@ -1,8 +1,8 @@
 //
 //  Studentlist+CoreDataClass.swift
-//  
+//  internProject
 //
-//  Created by Pavan D J on 04/04/22.
+//  Created by Pavan D J on 06/04/22.
 //
 //
 

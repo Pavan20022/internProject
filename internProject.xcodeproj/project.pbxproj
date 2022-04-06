@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8D14B3A6EBC6257F0A4C4C46 /* Pods_internProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6E32E8E509687D7D24A3241 /* Pods_internProject.framework */; };
-		CF4EE3BE27FBFE8200324744 /* Studentlist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EE3BD27FBFE8200324744 /* Studentlist+CoreDataProperties.swift */; };
-		CF4EE3BF27FBFE8200324744 /* Studentlist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4EE3BC27FBFE8200324744 /* Studentlist+CoreDataClass.swift */; };
 		CF4F01F927F4363700ECEC7C /* StudentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F01F827F4363700ECEC7C /* StudentModel.swift */; };
 		CF4F01FF27F472C500ECEC7C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F01FD27F472C500ECEC7C /* CustomTableViewCell.swift */; };
 		CF4F020027F472C500ECEC7C /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF4F01FE27F472C500ECEC7C /* CustomTableViewCell.xib */; };
 		CF4F888827E84BED007FF54B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F888727E84BED007FF54B /* ListViewController.swift */; };
+		CF51636527FD585C00BA5FB2 /* Studentlist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51636327FD585C00BA5FB2 /* Studentlist+CoreDataClass.swift */; };
+		CF51636627FD585C00BA5FB2 /* Studentlist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51636427FD585C00BA5FB2 /* Studentlist+CoreDataProperties.swift */; };
 		CF53ECFA27E453E400B69C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53ECF927E453E400B69C35 /* AppDelegate.swift */; };
 		CF53ECFC27E453E400B69C35 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53ECFB27E453E400B69C35 /* SceneDelegate.swift */; };
 		CF53ECFE27E453E400B69C35 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53ECFD27E453E400B69C35 /* ViewController.swift */; };
@@ -34,12 +34,12 @@
 /* Begin PBXFileReference section */
 		A6840251B4FEC45D3A36CCB0 /* Pods-internProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-internProject.debug.xcconfig"; path = "Target Support Files/Pods-internProject/Pods-internProject.debug.xcconfig"; sourceTree = "<group>"; };
 		C7D506DCD6A68AB23F134944 /* Pods-internProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-internProject.release.xcconfig"; path = "Target Support Files/Pods-internProject/Pods-internProject.release.xcconfig"; sourceTree = "<group>"; };
-		CF4EE3BC27FBFE8200324744 /* Studentlist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Studentlist+CoreDataClass.swift"; path = "/Users/pavandj/Desktop/internProject/internProject/Studentlist+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		CF4EE3BD27FBFE8200324744 /* Studentlist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Studentlist+CoreDataProperties.swift"; path = "/Users/pavandj/Desktop/internProject/internProject/Studentlist+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		CF4F01F827F4363700ECEC7C /* StudentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentModel.swift; sourceTree = "<group>"; };
 		CF4F01FD27F472C500ECEC7C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CF4F01FE27F472C500ECEC7C /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		CF4F888727E84BED007FF54B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		CF51636327FD585C00BA5FB2 /* Studentlist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Studentlist+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		CF51636427FD585C00BA5FB2 /* Studentlist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Studentlist+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CF53ECF627E453E400B69C35 /* internProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = internProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF53ECF927E453E400B69C35 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF53ECFB27E453E400B69C35 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -94,6 +94,8 @@
 		CF53ECF827E453E400B69C35 /* internProject */ = {
 			isa = PBXGroup;
 			children = (
+				CF51636327FD585C00BA5FB2 /* Studentlist+CoreDataClass.swift */,
+				CF51636427FD585C00BA5FB2 /* Studentlist+CoreDataProperties.swift */,
 				CF53ECF927E453E400B69C35 /* AppDelegate.swift */,
 				CF53ECFB27E453E400B69C35 /* SceneDelegate.swift */,
 				CF53ECFD27E453E400B69C35 /* ViewController.swift */,
@@ -102,8 +104,6 @@
 				CF53ED2F27E4829300B69C35 /* LoginViewController.swift */,
 				CF53ED3427E489E900B69C35 /* RegisterViewController.swift */,
 				CF53ECFF27E453E400B69C35 /* Main.storyboard */,
-				CF4EE3BC27FBFE8200324744 /* Studentlist+CoreDataClass.swift */,
-				CF4EE3BD27FBFE8200324744 /* Studentlist+CoreDataProperties.swift */,
 				CF53ED0527E453E500B69C35 /* Assets.xcassets */,
 				CF53ED0727E453E500B69C35 /* LaunchScreen.storyboard */,
 				CF53ED0A27E453E500B69C35 /* Info.plist */,
@@ -256,11 +256,10 @@
 				CF53ED3527E489E900B69C35 /* RegisterViewController.swift in Sources */,
 				CF53ED3027E4829300B69C35 /* LoginViewController.swift in Sources */,
 				CF4F01FF27F472C500ECEC7C /* CustomTableViewCell.swift in Sources */,
-				CF4EE3BE27FBFE8200324744 /* Studentlist+CoreDataProperties.swift in Sources */,
 				CF53ECFE27E453E400B69C35 /* ViewController.swift in Sources */,
 				CF4F01F927F4363700ECEC7C /* StudentModel.swift in Sources */,
 				CF53ED0427E453E400B69C35 /* internProject.xcdatamodeld in Sources */,
-				CF4EE3BF27FBFE8200324744 /* Studentlist+CoreDataClass.swift in Sources */,
+				CF51636627FD585C00BA5FB2 /* Studentlist+CoreDataProperties.swift in Sources */,
 				CF6239DD27FB055B006AEF45 /* EntryModel.swift in Sources */,
 				CF53ECFA27E453E400B69C35 /* AppDelegate.swift in Sources */,
 				CF66145827F303F900FB7EE1 /* EntryViewController.swift in Sources */,
@@ -268,6 +267,7 @@
 				CF53ECFC27E453E400B69C35 /* SceneDelegate.swift in Sources */,
 				CF4F888827E84BED007FF54B /* ListViewController.swift in Sources */,
 				CF63E37627F6E0DB0090C78E /* DetailsViewController.swift in Sources */,
+				CF51636527FD585C00BA5FB2 /* Studentlist+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,7 +416,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4MRT5KL8R;
 				INFOPLIST_FILE = internProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -435,11 +437,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U4MRT5KL8R;
 				INFOPLIST_FILE = internProject/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.globaldelight.internProject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

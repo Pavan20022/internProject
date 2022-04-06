@@ -41,7 +41,7 @@ class RegisterViewController: UIViewController {
                 //success
                 print("Registration Successful!")
                 
-                self.performSegue(withIdentifier: "goToList", sender: self)
+                self.navigationController?.popViewController(animated: true)                //self.performSegue(withIdentifier: "goToList", sender: self)
                 
             }
         }

@@ -30,13 +30,15 @@ class LoginViewController: UIViewController {
     */
     @IBAction func loginPressed(_ sender: UIButton) {
         //TODO: Log in the user
+        
+        
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { ( user, error) in
             if error != nil {
                 print(error!)
             } else {
                 print("Login is successful")
-            
-                
+                self.navigationController?.popViewController(animated: true)
+                //self.performSegue(withIdentifier: "goToList", sender: self)
                 
             }
         }
