@@ -58,6 +58,11 @@ class DetailsViewController: UIViewController{
     }
     
     
+    @IBAction func AddToFavourites(_ sender: Any) {
+        let dict = ["name": nameLabel.text ,"usn": usnLabel.text,"cgpa":cgpaLabel.text,"branch":branchLabel.text]
+        
+        EntryModel.shareInstance.save(object: dict as! [String : String])
+    }
     
 }
     
