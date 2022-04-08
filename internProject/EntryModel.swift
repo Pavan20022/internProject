@@ -32,5 +32,16 @@ class EntryModel {
         
     }
     
+    func getStudentData() -> [Studentlist]{
+        var student = [Studentlist]()
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Studentlist")
+        do {
+            student = try context?.fetch(fetchRequest) as! [Studentlist]
+            print("data obtained successfully")
+        }catch{
+            print("can not get data")
+        }
+        return student
+    }
     
 }

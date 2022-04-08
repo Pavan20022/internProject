@@ -62,8 +62,18 @@ class DetailsViewController: UIViewController{
         let dict = ["name": nameLabel.text ,"usn": usnLabel.text,"cgpa":cgpaLabel.text,"branch":branchLabel.text]
         
         EntryModel.shareInstance.save(object: dict as! [String : String])
+        
+   
     }
     
-}
+
+    @IBAction func showFavourites(_ sender: Any) {
+        let favVc = self.storyboard?.instantiateViewController(identifier: "FavViewController") as! FavViewController
+           self.navigationController?.pushViewController(favVc, animated: true)
+                }
+    
+    }
+    
+
     
 

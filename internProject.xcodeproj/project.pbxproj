@@ -12,7 +12,8 @@
 		CF4F01FF27F472C500ECEC7C /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F01FD27F472C500ECEC7C /* CustomTableViewCell.swift */; };
 		CF4F020027F472C500ECEC7C /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF4F01FE27F472C500ECEC7C /* CustomTableViewCell.xib */; };
 		CF4F888827E84BED007FF54B /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF4F888727E84BED007FF54B /* ListViewController.swift */; };
-		CF51637B27FDA82E00BA5FB2 /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51637A27FDA82E00BA5FB2 /* FavouriteViewController.swift */; };
+		CF50F354280015E30060690D /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50F353280015E30060690D /* InitialViewController.swift */; };
+		CF50F36128001D370060690D /* HelperExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF50F36028001D370060690D /* HelperExtensions.swift */; };
 		CF51638127FDA95D00BA5FB2 /* Studentlist+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51637F27FDA95D00BA5FB2 /* Studentlist+CoreDataClass.swift */; };
 		CF51638227FDA95D00BA5FB2 /* Studentlist+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF51638027FDA95D00BA5FB2 /* Studentlist+CoreDataProperties.swift */; };
 		CF53ECFA27E453E400B69C35 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53ECF927E453E400B69C35 /* AppDelegate.swift */; };
@@ -29,6 +30,8 @@
 		CF6239E027FB0CA6006AEF45 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6239DF27FB0CA6006AEF45 /* CoreData.framework */; };
 		CF63E37627F6E0DB0090C78E /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF63E37527F6E0DB0090C78E /* DetailsViewController.swift */; };
 		CF66145827F303F900FB7EE1 /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF66145727F303F900FB7EE1 /* EntryViewController.swift */; };
+		CF8CCCFF27FEB72B00558895 /* FavTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CCCFE27FEB72B00558895 /* FavTableViewCell.swift */; };
+		CF8CCD0F27FEEE4400558895 /* FavViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF8CCD0E27FEEE4400558895 /* FavViewController.swift */; };
 		CFCD320427F57E9900897303 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD320327F57E9900897303 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +42,8 @@
 		CF4F01FD27F472C500ECEC7C /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		CF4F01FE27F472C500ECEC7C /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
 		CF4F888727E84BED007FF54B /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		CF51637A27FDA82E00BA5FB2 /* FavouriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		CF50F353280015E30060690D /* InitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InitialViewController.swift; path = "../../../Downloads/SwiftFirebaseTutorials-master/FirebaseApp-3-Auth-State-Start/FirebaseApp/InitialViewController.swift"; sourceTree = "<group>"; };
+		CF50F36028001D370060690D /* HelperExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperExtensions.swift; sourceTree = "<group>"; };
 		CF51637F27FDA95D00BA5FB2 /* Studentlist+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Studentlist+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		CF51638027FDA95D00BA5FB2 /* Studentlist+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Studentlist+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		CF53ECF627E453E400B69C35 /* internProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = internProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +62,8 @@
 		CF6239DF27FB0CA6006AEF45 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		CF63E37527F6E0DB0090C78E /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		CF66145727F303F900FB7EE1 /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
+		CF8CCCFE27FEB72B00558895 /* FavTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavTableViewCell.swift; sourceTree = "<group>"; };
+		CF8CCD0E27FEEE4400558895 /* FavViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavViewController.swift; sourceTree = "<group>"; };
 		CFCD320327F57E9900897303 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E6E32E8E509687D7D24A3241 /* Pods_internProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_internProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,6 +106,7 @@
 				CF51638027FDA95D00BA5FB2 /* Studentlist+CoreDataProperties.swift */,
 				CF53ECF927E453E400B69C35 /* AppDelegate.swift */,
 				CF53ECFB27E453E400B69C35 /* SceneDelegate.swift */,
+				CF50F353280015E30060690D /* InitialViewController.swift */,
 				CF53ECFD27E453E400B69C35 /* ViewController.swift */,
 				CF4F888727E84BED007FF54B /* ListViewController.swift */,
 				CF66145727F303F900FB7EE1 /* EntryViewController.swift */,
@@ -117,7 +124,9 @@
 				CFCD320327F57E9900897303 /* TabBarController.swift */,
 				CF63E37527F6E0DB0090C78E /* DetailsViewController.swift */,
 				CF6239DC27FB055B006AEF45 /* EntryModel.swift */,
-				CF51637A27FDA82E00BA5FB2 /* FavouriteViewController.swift */,
+				CF8CCCFE27FEB72B00558895 /* FavTableViewCell.swift */,
+				CF8CCD0E27FEEE4400558895 /* FavViewController.swift */,
+				CF50F36028001D370060690D /* HelperExtensions.swift */,
 			);
 			path = internProject;
 			sourceTree = "<group>";
@@ -259,6 +268,7 @@
 				CF53ED3527E489E900B69C35 /* RegisterViewController.swift in Sources */,
 				CF53ED3027E4829300B69C35 /* LoginViewController.swift in Sources */,
 				CF4F01FF27F472C500ECEC7C /* CustomTableViewCell.swift in Sources */,
+				CF50F354280015E30060690D /* InitialViewController.swift in Sources */,
 				CF53ECFE27E453E400B69C35 /* ViewController.swift in Sources */,
 				CF4F01F927F4363700ECEC7C /* StudentModel.swift in Sources */,
 				CF53ED0427E453E400B69C35 /* internProject.xcdatamodeld in Sources */,
@@ -267,9 +277,11 @@
 				CF53ECFA27E453E400B69C35 /* AppDelegate.swift in Sources */,
 				CF66145827F303F900FB7EE1 /* EntryViewController.swift in Sources */,
 				CFCD320427F57E9900897303 /* TabBarController.swift in Sources */,
+				CF8CCD0F27FEEE4400558895 /* FavViewController.swift in Sources */,
 				CF53ECFC27E453E400B69C35 /* SceneDelegate.swift in Sources */,
-				CF51637B27FDA82E00BA5FB2 /* FavouriteViewController.swift in Sources */,
+				CF8CCCFF27FEB72B00558895 /* FavTableViewCell.swift in Sources */,
 				CF51638227FDA95D00BA5FB2 /* Studentlist+CoreDataProperties.swift in Sources */,
+				CF50F36128001D370060690D /* HelperExtensions.swift in Sources */,
 				CF4F888827E84BED007FF54B /* ListViewController.swift in Sources */,
 				CF63E37627F6E0DB0090C78E /* DetailsViewController.swift in Sources */,
 			);

@@ -69,7 +69,6 @@ class EntryViewController: UIViewController {
     @IBAction func addEntry(_ sender: Any) {
         addStudent()
         navigationController?.popViewController(animated: true)
-        let dict = ["name": nameTextField.text ,"usn": usnTextField.text,"cgpa":cgpaTextField.text,"branch":branchTextField.text]
         
         //EntryModel.shareInstance.save(object: dict as! [String : String])
         
