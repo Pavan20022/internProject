@@ -38,10 +38,9 @@ class LoginViewController: UIViewController {
             } else {
                 print("Login is successful")
                 self.navigationController?.popViewController(animated: true)
-                //self.performSegue(withIdentifier: "goToList", sender: self)
+                self.performSegue(withIdentifier: "goToTab", sender: self)
                 
-            }
-        }
+            }        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,22 +48,11 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         if Auth.auth().currentUser != nil {
             self.performSegue(withIdentifier: "toHomeScreen", sender: self)
-        }
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        get {
-            return .lightContent
         }
     }
 }

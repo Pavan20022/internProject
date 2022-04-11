@@ -63,17 +63,12 @@ class DetailsViewController: UIViewController{
         
         EntryModel.shareInstance.save(object: dict as! [String : String])
         
-   
-    }
-    
-
-    @IBAction func showFavourites(_ sender: Any) {
         let favVc = self.storyboard?.instantiateViewController(identifier: "FavViewController") as! FavViewController
            self.navigationController?.pushViewController(favVc, animated: true)
                 }
+        }
     
-    }
-    
+
 
     
 
