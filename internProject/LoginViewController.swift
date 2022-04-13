@@ -37,10 +37,20 @@ class LoginViewController: UIViewController {
                 print(error!)
             } else {
                 print("Login is successful")
-                self.navigationController?.popViewController(animated: true)
-                self.performSegue(withIdentifier: "goToTab", sender: self)
                 
-            }        }
+            }
+            
+        }
+        
+        // ...
+           // after login is done, maybe put this in the login web service completion block
+
+           let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let mainTabBarController = storyboard.instantiateViewController(identifier: "TabBarController")
+           
+           // This is to get the SceneDelegate object from your view controller
+           // then call the change root view controller function to change to main tab bar
+           (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(mainTabBarController)
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,11 +58,6 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
         
-        if Auth.auth().currentUser != nil {
-            self.performSegue(withIdentifier: "toHomeScreen", sender: self)
-        }
-    }
+    
 }

@@ -205,25 +205,18 @@ class ListViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    //@IBAction func logOutPressed(_ sender: Any) {
-        //do{
-          //  try Auth.auth().signOut()
+    @IBAction func logOutPressed(_ sender: Any) {
+        do{
+            try Auth.auth().signOut()
             
-        //}catch {
-           // print("error: there was a problem signing out")
-        //}
+        }catch {
+            print("error: there was a problem signing out")
+        }
         
-        //guard (navigationController?.popToRootViewController(animated: true)) != nil else {
-           // print("No View controllers to pop off")
-           // return
-      //  }
-            
-        
-    //}
-    
-    //MARK- ADD NEW ITEM
-//}
-    
-//}
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+           let loginNavController = storyboard.instantiateViewController(identifier: "LoginViewController")
+
+           (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(loginNavController)
+    }
 
 }
