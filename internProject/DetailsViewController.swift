@@ -17,7 +17,7 @@ class DetailsViewController: UIViewController{
     @IBOutlet weak var branchLabel: UILabel!
     
     let studentDetailModel = StudentDetailModel()
-    var selectedStudent : StudentModel?
+    var selectedStudent : Student?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +43,15 @@ class DetailsViewController: UIViewController{
         refStudents.observe(DataEventType.value, with:{(DataSnapshot) in
             
             if DataSnapshot.childrenCount > 0{
-                    let studentObject = DataSnapshot.value as?  [String: AnyObject]
-                    let studentName = studentObject?["studentName"]
-                    let branchName = studentObject?["branchName"]
-                    let studentUSN = studentObject?["studentUsn"]
-                    let studentCgpa = studentObject?["cgpa"]
-
+                let studentObject = DataSnapshot.value as?  [String: AnyObject]
+                let studentName = studentObject?["studentName"]
+                let branchName = studentObject?["branchName"]
+                let studentUSN = studentObject?["studentUsn"]
+                let studentCgpa = studentObject?["cgpa"]
+                
                 self.studentDetailModel.loadItem(name: studentName as! String, usn: studentUSN as! String, branch: branchName as! String, cgpa: studentCgpa as! String)
                 self.displayData()
+                
             }
             
         })
@@ -59,14 +60,20 @@ class DetailsViewController: UIViewController{
     
     
     @IBAction func AddToFavourites(_ sender: Any) {
-        let dict = ["name": nameLabel.text ,"usn": usnLabel.text,"cgpa":cgpaLabel.text,"branch":branchLabel.text]
-        
-        EntryModel.shareInstance.save(object: dict as! [String : String])
-        
-        let favVc = self.storyboard?.instantiateViewController(identifier: "FavViewController") as! FavViewController
-           self.navigationController?.pushViewController(favVc, animated: true)
-                }
-        }
+        EntryModel.shareInstance.save(object: selectedStudent!)
+        // display an alert on successful addition
+        let alertController = UIAlertController(title: "Success", message: "Student added to Favorites list successfully", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
+//        if let favVc = self.storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as? FavoriteTableViewController {
+//            self.navigationController?.pushViewController(favVc, animated: true)
+//        }
+    }
+    
+    
+    
+}
     
 
 

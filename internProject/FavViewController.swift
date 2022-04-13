@@ -7,63 +7,40 @@
 
 import UIKit
 
-class FavViewController: UIViewController {
-
-   
+class FavViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var favTableView: UITableView!
     
-    
-    var student = [Studentlist]()
-    
+    let studentModel = StudentModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        student = EntryModel.shareInstance.getStudentData()
-        
+        favTableView.dataSource = self
+        favTableView.delegate = self
+        favTableView.register(UINib(nibName: "CustomTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        studentModel.loadItems()
+        favTableView.reloadData()
+    }
     
-    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return student.count
+        return studentModel.numberOfItems()
    }
     
-      func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavTableViewCell", for: indexPath) as! FavTableViewCell
-        cell.nameLabel.text = student[indexPath.row].name
-        cell.cgpaLabel.text = student[indexPath.row].cgpa
-        cell.usnLabelField.text = student[indexPath.row].usn
-        cell.branchLabel.text = student[indexPath.row].branch
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! CustomTableViewCell
+        
+        let student = studentModel.getItem(index: indexPath.row)
+        
+        cell.textLabel?.text = student.name
+        cell.detailTextLabel?.text = student.branch
+        
         return cell
     }
-    
- //     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-     //   return 110
-  //  }
-    
 
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

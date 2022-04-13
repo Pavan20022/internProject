@@ -30,8 +30,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "75"
             endingLineNumber = "75"
-            landmarkName = "addEntry(_:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -147,16 +147,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "21FDCB6B-F928-4D4E-920B-CD11FFB2CFDE"
+            uuid = "DED67718-9FCE-4329-8739-6B5A624E99E8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "internProject/FavViewController.swift"
+            filePath = "internProject/Student.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "loadItems()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

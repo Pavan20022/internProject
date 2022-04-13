@@ -21,7 +21,7 @@ class ListViewController: UITableViewController {
     @IBOutlet var tableStudent: UITableView!
     
     
-    var studentlist = [StudentModel]()
+    var studentlist = [Student]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,7 @@ class ListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell",for: indexPath) as! CustomTableViewCell
         
-        let student: StudentModel
+        let student: Student
         
         student = studentlist[indexPath.row]
         
@@ -130,7 +130,7 @@ class ListViewController: UITableViewController {
                     let studentId = studentObject?["id"]
                 
                     
-                    let student = StudentModel(id: studentId as! String?, name: studentName as! String?, branch: branchName as! String?)
+                    let student = Student(id: studentId as! String?, name: studentName as! String?, branch: branchName as! String?)
                     
                     self.studentlist.append(student)
                     

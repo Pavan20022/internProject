@@ -2,7 +2,7 @@
 //  Studentlist+CoreDataProperties.swift
 //  internProject
 //
-//  Created by Pavan D J on 06/04/22.
+//  Created by Pavan D J on 11/04/22.
 //
 //
 
@@ -17,10 +17,8 @@ extension Studentlist {
     }
 
     @NSManaged public var branch: String?
-    @NSManaged public var cgpa: String?
-    @NSManaged public var id: UUID?
+    @NSManaged public var id: String?
     @NSManaged public var name: String?
-    @NSManaged public var usn: String?
 
 }
 

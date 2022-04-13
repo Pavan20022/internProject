@@ -8,7 +8,7 @@
 import Foundation
 
 
-class StudentModel {
+class Student {
     
     var id: String?
     var name: String?
@@ -20,6 +20,31 @@ class StudentModel {
         self.branch = branch
     }
 }
+
+class StudentModel {
+    var studentlist = [Student]()
+    
+    func loadItems() {
+        self.studentlist = EntryModel.shareInstance.getStudentData()
+    }
+    
+    func getItems() -> [Student] {
+        return studentlist
+    }
+    
+    func getItem(index : Int) -> Student{
+        return studentlist[index]
+    }
+    
+    func numberOfItems() -> Int {
+        return studentlist.count
+    }
+    
+}
+
+
+
+
 
 class StudentDetail {
     var studentName: String
