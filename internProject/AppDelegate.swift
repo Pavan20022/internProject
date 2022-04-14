@@ -43,10 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
     
+    // MARK: - Core Data
     
-
-    // MARK: - Core Data stack
-
     lazy var persistentContainer: NSPersistentContainer = {
     
         let container = NSPersistentContainer(name: "internProject")
@@ -58,8 +56,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
+    
 
     // MARK: - Core Data Saving support
+    
 
     func saveContext () {
         let context = persistentContainer.viewContext
@@ -73,6 +73,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
 }
 

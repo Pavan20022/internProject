@@ -11,6 +11,7 @@ class FavViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 
     @IBOutlet weak var favTableView: UITableView!
     
+    @IBOutlet weak var viewSearch: UISearchBar!
     let studentModel = StudentModel()
     
     override func viewDidLoad() {

@@ -4,8 +4,14 @@
         <attribute name="branch" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="toFav" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Studentlist"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="Studentlist" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="Studentlist" positionX="-63" positionY="-18" width="128" height="103"/>
     </elements>
 </model>
