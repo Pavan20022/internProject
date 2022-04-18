@@ -19,6 +19,7 @@ class DetailsViewController: UIViewController{
     let studentDetailModel = StudentDetailModel()
     var selectedStudent : Student?
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
@@ -60,22 +61,45 @@ class DetailsViewController: UIViewController{
     
     
     @IBAction func AddToFavourites(_ sender: Any) {
-        EntryModel.shareInstance.save(object: selectedStudent!)
+        createStudent(object: selectedStudent!)
         // display an alert on successful addition
         let alertController = UIAlertController(title: "Success", message: "Student added to Favorites list successfully", preferredStyle: .alert)
         let action = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alertController.addAction(action)
         self.present(alertController, animated: true, completion: nil)
-//        if let favVc = self.storyboard?.instantiateViewController(withIdentifier: "FavoriteTableViewController") as? FavoriteTableViewController {
-//            self.navigationController?.pushViewController(favVc, animated: true)
-//        }
+
     }
     
+    func createStudent(object : Student) {
+        let student = Studentlist(context: PersistentStorage.shared.context)
+        student.name = object.name
+        student.branch = object.branch
+        student.id = object.id
+      //  do {
+       //     try PersistentStorage.saveContext()
+       //     print("contents are saved")
+       // }catch{
+          //  print("data is not saved")
+       // }
+    }
     
+    func fetchStudent(){
+        do {
+            let path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+            debugPrint(path[0])
+            guard let result = try PersistentStorage.shared.context.fetch(Studentlist.fetchRequest()) as? [Student] else {return}
+            
+            result.forEach({debugPrint($0.name)})
+            result.forEach({debugPrint($0.branch)})
+            result.forEach({debugPrint($0.id)})
+            
+        }catch let error {
+            debugPrint(error)
+        }
     
 }
     
-
+}
 
     
 

@@ -9,27 +9,19 @@ import Foundation
 import CoreData
 import UIKit
 
-protocol StudentRepository {
-    
-    func save(object: Student)
-    func getAll() -> [Student]?
-    func get(byIdentifier id: UUID) -> Student
-    func update(object: Student)
-    
-}
 
-class EntryModel {
+
+final class EntryModel {
     
-    private init(){}
     
    static var shareInstance = EntryModel()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
     
     func save(object: Student){
     
-        let entityName = NSEntityDescription.insertNewObject(forEntityName: "Studentlist", into: context) as! Studentlist
+        let entityName = NSEntityDescription.insertNewObject(forEntityName: "Studentlist", into: ) as! Studentlist
 
         entityName.name = object.name
         entityName.branch = object.branch
